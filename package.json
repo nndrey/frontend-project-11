@@ -1,0 +1,23 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "RSS agregator",
+  "homepage": "https://github.com/nndrey/frontend-project-11#readme",
+  "bugs": {
+    "url": "https://github.com/nndrey/frontend-project-11/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nndrey/frontend-project-11.git"
+  },
+  "license": "ISC",
+  "author": "Andrey",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

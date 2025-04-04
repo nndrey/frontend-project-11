@@ -2,7 +2,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
   mode: process.env.NODE_ENV || 'development',
-  entry: './src/index.js',
   module: {
     rules: [
       {
@@ -39,6 +38,8 @@ export default {
     clean: true,
   },
   devServer: {
+    open: true,
+    host: 'localhost',
     client: {
       overlay: false,
     },

@@ -15,10 +15,14 @@ const compat = new FlatCompat({
 
 export default [
   {
+    ignores: ['dist/'],
+  },
+  {
     languageOptions: {
       globals: {
         ...globals.node,
         ...globals.jest,
+        ...globals.browser,
       },
       parserOptions: {
         ecmaVersion: 'latest',

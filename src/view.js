@@ -7,7 +7,5 @@ export default (watcheState) => {
     inputRss.focus();
   } else {
     inputRss.classList.add('is-invalid');
-    inputRss.value = '';
-    inputRss.focus();
   }
 };

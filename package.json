@@ -45,6 +45,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "globals": "^16.0.0",
+    "i18next": "^25.0.1",
     "on-change": "^5.0.1",
     "yup": "^1.6.1"
   }

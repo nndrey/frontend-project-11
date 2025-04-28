@@ -21,11 +21,11 @@ export default {
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: 'url-loader?limit=10000',
+        type: 'asset/inline',
       },
       {
         test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
-        use: 'file-loader',
+        type: 'asset/resource',
       },
     ],
   },

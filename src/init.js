@@ -4,4 +4,8 @@ export default () => ({
     collectionUrl: [],
     validation: true,
   },
+  rss_data: null,
+  errors: {},
+  feeds: [],
+  posts: [],
 });

@@ -8,6 +8,7 @@ export default {
       parserRss: 'При загрузке произошла ошибка',
       valid_Url: 'Ссылка должна быть валидным URL',
       unique_Rss: 'RSS уже существует',
+      upDate_error: 'Ошибка при обновлении',
     },
   },
 };

@@ -1,12 +1,11 @@
 import onChange from 'on-change';
 import i18next from 'i18next';
-import axios from 'axios';
 import init from './init.js';
 import render from './view.js';
 import validatorUrl from './validate.js';
 import resources from './locales/index.js';
-import parserDom from './parserRss.js';
-import createFeedAndPost from './createFeedAndPost.js';
+import makeRequest from './makeRequest.js';
+import checkingForUpdates from './checkingForUpdates.js';
 
 const formRss = document.querySelector('form.rss-form');
 const proxyLink = 'https://allorigins.hexlet.app/get?disableCache=true&url=';
@@ -29,18 +28,15 @@ export default () => {
     const url = formData.get('url');
     validatorUrl(url, watcheState.formData.collectionUrl)
       .then((link) => {
-        watcheState.formData.currentUrl = link;
         watcheState.formData.collectionUrl.push(link);
-        watcheState.formData.validation = true;
-
-        axios.get(proxyLink + link)
-          .then((response) => {
+        watcheState.formData.validation = 'valid';
+        const proxyLinkWithLink = proxyLink + link;
+        watcheState.rss_data = 'processus';
+        makeRequest(proxyLinkWithLink)
+          .then((data) => {
             watcheState.errors = {};
-            const dataRss = response.data.contents;
-            const dataFeedAndPosts = parserDom(dataRss);
-            const newFeedAndPosts = createFeedAndPost(dataFeedAndPosts);
             watcheState.rss_data = 'itRead';
-            const { feed, posts } = newFeedAndPosts;
+            const { feed, posts } = data;
             watcheState.feeds = watcheState.feeds.concat(feed);
             watcheState.posts = watcheState.posts.concat(posts);
           })
@@ -50,12 +46,26 @@ export default () => {
           });
       })
       .catch((err) => {
-        watcheState.formData.validation = false;
-        watcheState.formData.currentUrl = url;
+        watcheState.formData.validation = 'inValid';
         err.errors.map((error) => {
           watcheState.errors.error = i18n.t(error.key);
           return error;
         });
       });
   });
+  const upDate = () => {
+    const { feeds, posts } = watcheState;
+    return checkingForUpdates(makeRequest, feeds, watcheState)
+      .then((newPosts) => {
+        watcheState.formData.validation = null;
+        watcheState.posts = posts.concat(newPosts);
+      })
+      .catch(() => {
+        watcheState.errors.error = i18n.t('errors.upDate_error');
+      })
+      .finally(() => {
+        setTimeout(upDate, 5000);
+      });
+  };
+  upDate();
 };

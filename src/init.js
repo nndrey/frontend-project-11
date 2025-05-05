@@ -1,8 +1,7 @@
 export default () => ({
   formData: {
-    currentUrl: '',
     collectionUrl: [],
-    validation: true,
+    validation: null,
   },
   rss_data: null,
   errors: {},

@@ -1,10 +1,12 @@
 import uniqueId from 'lodash/uniqueId.js';
 
-export default (data) => {
+export default (data, linkForFeed) => {
   const { feedRss, postsRss } = data;
   const { feedTitle, feedDescription } = feedRss;
   const idForFeed = uniqueId();
-  const feed = { id: idForFeed, title: feedTitle, description: feedDescription };
+  const feed = {
+    id: idForFeed, title: feedTitle, description: feedDescription, linkForFeed,
+  };
 
   const posts = postsRss.map((post) => {
     const { title, link, description } = post;

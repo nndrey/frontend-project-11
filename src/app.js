@@ -49,13 +49,13 @@ export default () => {
     const url = formData.get('url');
     validatorUrl(url, watcheState.formData.collectionUrl)
       .then((link) => {
-        watcheState.formData.collectionUrl.push(link);
-        watcheState.formData.validation = 'valid';
         const proxyLinkWithLink = proxyLink + link;
         watcheState.rss_data = 'processus';
         makeRequest(proxyLinkWithLink)
           .then((data) => {
             watcheState.errors = {};
+            watcheState.formData.collectionUrl.push(link);
+            watcheState.formData.validation = 'valid';
             watcheState.rss_data = 'itRead';
             const { feed, posts } = data;
             watcheState.feeds = watcheState.feeds.concat(feed);

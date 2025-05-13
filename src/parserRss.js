@@ -4,6 +4,9 @@ export default (dataRss) => {
 
   if (doc.querySelector('parsererror')) throw new Error('errors.parserRss');
 
+  if (!doc.querySelector('rss') || !doc.querySelector('channel')) {
+    throw new Error('errors.parserRss');
+  }
   const feedTitle = doc.querySelector('title').textContent;
   const feedDescription = doc.querySelector('description').textContent;
   const items = doc.querySelectorAll('item');

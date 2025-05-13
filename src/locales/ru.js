@@ -5,7 +5,7 @@ export default {
     button_name: 'Просмотр',
     text_success: 'RSS успешно загружен',
     errors: {
-      parserRss: 'При загрузке произошла ошибка',
+      parserRss: 'Ресурс не содержит валидный RSS',
       valid_Url: 'Ссылка должна быть валидным URL',
       unique_Rss: 'RSS уже существует',
       upDate_error: 'Ошибка при обновлении',

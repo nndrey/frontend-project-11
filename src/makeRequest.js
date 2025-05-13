@@ -10,5 +10,8 @@ export default (link) => axios.get(link)
     return newFeedAndPosts;
   })
   .catch((error) => {
+    if (error.isAxiosError) {
+      throw new Error('errors.network');
+    }
     throw error;
   });

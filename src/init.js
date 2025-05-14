@@ -7,4 +7,4 @@ export default () => ({
   errors: {},
   feeds: [],
   posts: [],
-});
+})

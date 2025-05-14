@@ -12,4 +12,4 @@ export default {
       upDate_error: 'Ошибка при обновлении',
     },
   },
-};
+}

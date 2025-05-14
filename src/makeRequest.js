@@ -1,17 +1,17 @@
-import axios from 'axios';
-import parserDom from './parserRss.js';
-import createFeedAndPost from './createFeedAndPost.js';
+import axios from 'axios'
+import parserDom from './parserRss.js'
+import createFeedAndPost from './createFeedAndPost.js'
 
-export default (link) => axios.get(link)
+export default link => axios.get(link)
   .then((response) => {
-    const dataRss = response.data.contents;
-    const dataFeedAndPosts = parserDom(dataRss);
-    const newFeedAndPosts = createFeedAndPost(dataFeedAndPosts, link);
-    return newFeedAndPosts;
+    const dataRss = response.data.contents
+    const dataFeedAndPosts = parserDom(dataRss)
+    const newFeedAndPosts = createFeedAndPost(dataFeedAndPosts, link)
+    return newFeedAndPosts
   })
   .catch((error) => {
     if (error.isAxiosError) {
-      throw new Error('errors.network');
+      throw new Error('errors.network')
     }
-    throw error;
-  });
+    throw error
+  })

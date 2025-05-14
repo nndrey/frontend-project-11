@@ -1,5 +1,5 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 export default {
   mode: process.env.NODE_ENV || 'development',
@@ -51,4 +51,4 @@ export default {
       overlay: false,
     },
   },
-};
+}

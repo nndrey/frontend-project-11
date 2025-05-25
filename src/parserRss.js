@@ -2,10 +2,10 @@ export default (dataRss) => {
   const parser = new DOMParser()
   const doc = parser.parseFromString(dataRss, 'application/xml')
 
-  if (doc.querySelector('parsererror')) throw new Error('errors.parserRss')
+  if (doc.querySelector('parsererror')) throw new Error('errors.parser_Rss')
 
   if (!doc.querySelector('rss') || !doc.querySelector('channel')) {
-    throw new Error('errors.parserRss')
+    throw new Error('errors.parser_Rss')
   }
   const feedTitle = doc.querySelector('title').textContent
   const feedDescription = doc.querySelector('description').textContent

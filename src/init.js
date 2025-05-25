@@ -3,7 +3,7 @@ export default () => ({
     collectionUrl: [],
     validation: null,
   },
-  rss_data: null,
+  feedAdditionStatus: null,
   errors: {},
   feeds: [],
   posts: [],

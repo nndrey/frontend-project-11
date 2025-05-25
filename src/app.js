@@ -8,14 +8,14 @@ import makeRequest from './makeRequest.js'
 import checkingForUpdates from './checkingForUpdates.js'
 
 const uiState = { modal: [], selectedPost: null }
-const initialState = { ...init(), uiState }
-const formRss = document.querySelector('form.rss-form')
-const postBox = document.querySelector('.posts')
-const proxyLink = 'https://allorigins.hexlet.app/get?disableCache=true&url='
+const proxyUrl = new URL('https://allorigins.hexlet.app/get?disableCache=true&url=')
 
 export default () => {
-  const defaultLang = 'ru'
+  const initialState = { ...init(), uiState }
+  const formRss = document.querySelector('form.rss-form')
+  const postBox = document.querySelector('.posts')
 
+  const defaultLang = 'ru'
   const i18n = i18next.createInstance()
   i18n.init({
     lng: defaultLang,
@@ -49,14 +49,14 @@ export default () => {
     const url = formData.get('url')
     validatorUrl(url, watcheState.formData.collectionUrl)
       .then((link) => {
-        const proxyLinkWithLink = proxyLink + link
-        watcheState.rss_data = 'processus'
-        makeRequest(proxyLinkWithLink)
+        const url = new URL(proxyUrl.href + link)
+        watcheState.feedAdditionStatus = 'start'
+        makeRequest(url.href)
           .then((data) => {
             watcheState.errors = {}
             watcheState.formData.collectionUrl.push(link)
             watcheState.formData.validation = 'valid'
-            watcheState.rss_data = 'itRead'
+            watcheState.feedAdditionStatus = 'success'
             const { feed, posts } = data
             watcheState.feeds = watcheState.feeds.concat(feed)
             watcheState.posts = watcheState.posts.concat(posts)
@@ -64,8 +64,8 @@ export default () => {
             watcheState.uiState.modal = watcheState.uiState.modal.concat(postForUi)
           })
           .catch((e) => {
-            watcheState.errors.error = i18n.t(e.message)
-            watcheState.rss_data = 'notRead'
+            watcheState.feedAdditionStatus = 'failure'
+            throw e
           })
       })
       .catch((err) => {

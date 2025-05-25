@@ -90,16 +90,16 @@ export default (watcheState, i18n, path, val) => {
   else if (watcheState.formData.validation === 'inValid') {
     inputRss.classList.add('is-invalid')
   }
-  if (val === 'processus') {
+  if (val === 'start') {
     button.setAttribute('disabled', 'true')
   }
-  if (val === 'itRead') {
+  if (val === 'success') {
     feedBack.classList.remove('text-danger')
     feedBack.classList.add('text-success')
     feedBack.textContent = i18n.t('text_success')
     button.removeAttribute('disabled')
   }
-  if (val === 'notRead') {
+  if (val === 'failure') {
     feedBack.classList.remove('text-success')
     feedBack.classList.add('text-danger')
     feedBack.textContent = i18n.t('errors.parserRss')

@@ -64,8 +64,9 @@ export default () => {
             watcheState.uiState.modal = watcheState.uiState.modal.concat(postForUi)
           })
           .catch((e) => {
+            const errorKey = e.message
+            watcheState.errors.error = i18n.t(errorKey)
             watcheState.feedAdditionStatus = 'failure'
-            throw e
           })
       })
       .catch((err) => {

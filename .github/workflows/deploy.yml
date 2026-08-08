@@ -27,7 +27,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
@@ -48,12 +48,11 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      # Добавляем этот шаг:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: '20'
-          cache: 'npm' # Кэширование ускорит работу, если внутри action будут доп. npm команды
+          node-version: '22' # Обновлено с 20 на 22
+          cache: 'npm'
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
@@ -61,3 +60,4 @@ jobs:
           vercel-token: ${{ env.VERCEL_TOKEN }}
           vercel-org-id: ${{ env.VERCEL_ORG_ID }}
           vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}
+          vercel-version: '47.2.2'

@@ -1,0 +1,35 @@
+{
+  "name": "@hexlet/code",
+  "version": "0.0.0",
+  "private": true,
+  "description": "RSS reader",
+  "homepage": "https://github.com/nndrey/frontend-project-11#readme",
+  "bugs": {
+    "url": "https://github.com/nndrey/frontend-project-11/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nndrey/frontend-project-11.git"
+  },
+  "license": "ISC",
+  "author": "Nndrey",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  },
+  "devDependencies": {
+    "@eslint/create-config": "^2.0.0",
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@stylistic/eslint-plugin-js": "^4.4.1",
+    "eslint": "^10.8.0",
+    "globals": "^17.9.0",
+    "vite": "^8.2.0"
+  }
+}

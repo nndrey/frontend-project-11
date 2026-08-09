@@ -1,0 +1,18 @@
+.container-fluid.bg-dark {
+  background: linear-gradient(90deg, rgb(54, 158, 166) 0%, rgb(237, 242, 209) 100%);
+}
+
+.text-muted {
+  color: whitesmoke !important;
+}
+
+.btn-primary {
+  background-color: #00a693!important;
+  border-color: #f0ffff !important;
+}
+
+.btn-primary:hover {
+  background-color: #008080 !important;
+  border-color: #6da !important;
+  font-weight: 500;
+}

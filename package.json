@@ -21,7 +21,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "bootstrap": "^5.3.8"
+    "bootstrap": "^5.3.8",
+    "valtio": "^2.3.2",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@eslint/create-config": "^2.0.0",

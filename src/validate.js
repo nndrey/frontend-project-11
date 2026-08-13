@@ -1,22 +1,29 @@
 import * as yup from 'yup'
 
-const schema = yup.object(({
+yup.setLocale({
+  mixed: {
+    required: 'errors.empty',
+  },
+  string: {
+    url: 'errors.format.url',
+  },
+})
+
+const schema = yup.object({
   url: yup.string()
-    .url('Ссылка должна быть валидным URL')
-    .required('Не должно быть пустым'),
-}))
+    .url()
+    .required(),
+})
 
 export default (url, state) => {
   const { feeds } = state.data
-  const normalizedUrl = url.trim()
-  return schema.validate({ url: normalizedUrl })
+
+  return schema.validate({ url })
     .then(() => {
-      if (feeds.includes(normalizedUrl)) {
-        throw new Error('RSS уже существует')
+      if (feeds.includes(url)) {
+        throw new Error('errors.duplicate')
       }
       return []
     })
-    .catch((e) => {
-      throw e
-    })
+    .catch((e) => { throw e })
 }

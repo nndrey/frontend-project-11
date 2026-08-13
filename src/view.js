@@ -13,21 +13,24 @@ const {
 }
 console.log(postsContainer, feedsContainer)
 
-export default (state) => {
-  const { errors } = state
-  if (errors.form.length > 0) {
-    input.classList.remove('is-valid')
-    input.classList.add('is-invalid')
-    feedBack.classList.remove('text-success')
-    feedBack.classList.add('text-danger')
-
-    const [message] = errors.form
-    feedBack.textContent = message
-    return
-  }
+const renderFeeds = (state, i18n) => {
   input.classList.remove('is-invalid')
   feedBack.classList.remove('text-danger')
-  feedBack.classList.add('text-succes')
-  feedBack.textContent = 'RSS успешно загружен'
+  feedBack.classList.add('text-success')
+  feedBack.textContent = i18n.t('processes.loading.feed')
 }
-export { form, input }
+
+const renderPosts = (state, i18n) => {
+  console.log(state, i18n)
+}
+
+const renderErrors = (state) => {
+  input.classList.remove('is-valid')
+  input.classList.add('is-invalid')
+  feedBack.classList.remove('text-success')
+  feedBack.classList.add('text-danger')
+
+  const [message] = state.errors.form
+  feedBack.textContent = message
+}
+export { form, input, renderFeeds, renderPosts, renderErrors }
